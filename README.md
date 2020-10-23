@@ -1,2 +1,2 @@
-# pytorch_optimizers
-Stochastic optimizers in pytorch
+# PyTorch Optimizers
+Stochastic optimizers in PyTorch
