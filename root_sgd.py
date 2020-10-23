@@ -1,4 +1,6 @@
-from torch.optim.optimizer import Optimizer
+import torch
+
+from torch.optim.optimizer import Optimizer, required
 
 
 class Root(Optimizer):
@@ -43,7 +45,7 @@ class Root(Optimizer):
                 if p.grad is None:
                     continue
                 buf = param_state['momentum_buffer']
-                p.data.add_(-group['lr'], buf)
+                p.data.add_(buf, alpha=-group['lr'])
         self.it += 1
         return loss
 

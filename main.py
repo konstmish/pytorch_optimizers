@@ -8,10 +8,11 @@ from utils import load_data, save_results
 
 def main(args):
     trainloader, testloader, num_classes = load_data(batch_size=args.batch_size)
-    net = resnet.ResNet18()
+    net = ResNet18()
     results = run_root(
-        net, n_epoch=args.n_epoch, lr=args.lr, weight_decay=0, checkpoint=125, noisy_train_stat=True)
-    save_results(*results)
+        net, args.batch_size, trainloader, testloader, n_epoch=args.n_epoch, 
+        lr=args.learning_rate, weight_decay=0, checkpoint=125, noisy_train_stat=True)
+    save_results(*results, method='root_sgd')
 
 
 if __name__ == '__main__':
